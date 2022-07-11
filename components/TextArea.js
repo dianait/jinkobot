@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Button from './Button';
 export default function TextArea({ notes }) {
   const [text, setText] = React.useState('');
+  let notesSort = notes.reverse();
 
   useEffect(() => {
     console.log(text);
@@ -15,16 +16,21 @@ export default function TextArea({ notes }) {
       text: '- ' + comment,
       date: formatDate(),
     };
-    notes.push(note);
+
+    notesSort.push(note);
+
     setText(comment);
     textarea.value = '';
   };
+
   return (
     <>
       <section>
-        <h2>NOTAS</h2>
+        <h2 style={{ textDecoration: 'underline' }}>
+          OBSERVACIONES SOBRE AMELIA
+        </h2>
         <aside>
-          {notes.map((note, index) => {
+          {notesSort.map((note, index) => {
             return (
               <div key={index}>
                 <p>📅 {note.date}</p>
@@ -32,6 +38,7 @@ export default function TextArea({ notes }) {
               </div>
             );
           })}
+          <h3 style={{ marginTop: '11rem' }}>Observaciones de la sesión:</h3>{' '}
         </aside>
         <textarea
           id="comments"
@@ -39,18 +46,23 @@ export default function TextArea({ notes }) {
         />
         <br />
         <form onSubmit={saveNote}>
-          <Button
-            text="GUARDAR"
-            type="submit"
-            width="200px"
-            backgroundColor="#FF8007"
-            color="white"
-          />
+          <button type="submit">GUARDAR</button>
         </form>
       </section>
       <style jsx>{`
+        button {
+          background-color: #ff8007;
+          color: white;
+          border-radius: 25px;
+          border: none;
+          width: 200px;
+          height: 45px;
+          font-size: 1.5rem;
+          margin-top: 1rem;
+          margin-left: 35rem;
+        }
         h2 {
-          margin-bottom: -2rem;
+          margin-bottom: -1rem;
           margin-left: 3rem;
           font-size: 2.3rem;
         }
