@@ -14,8 +14,20 @@ const ListOfCharts: React.FC<IPatientInfo> = ({
     <>
       <Container>
         <div>
-          <Chart data={chartEmotionData.results} />
-          <Chart data={chartEmotionData.time} />
+          <Chart
+            data={chartEmotionData.results}
+            label="Aciertos"
+            min={1}
+            max={3}
+            stepSize={1}
+          />
+          <Chart
+            data={chartEmotionData.time}
+            label="Segundos"
+            min={0}
+            max={15}
+            stepSize={3}
+          />
         </div>
         <TextArea notes={notes} />
       </Container>

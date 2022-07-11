@@ -17,6 +17,10 @@ export interface IListPatientInfo {
 export interface dataChart {
   name?: string;
   data: [];
+  label?: string;
+  stepSize?: Number;
+  max?: Number;
+  min?: Number;
 }
 
 export interface IQuestion {
